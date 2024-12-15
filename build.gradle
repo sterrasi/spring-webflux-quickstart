@@ -1,0 +1,87 @@
+buildscript {
+	dependencies {
+		classpath 'com.palantir.javaformat:gradle-palantir-java-format:2.50.0'
+	}
+}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.0'
+	id 'io.spring.dependency-management' version '1.1.6'
+	id 'com.diffplug.spotless' version "6.25.0"
+
+}
+
+group = 'com.github.sterrasi'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	gradlePluginPortal()
+	mavenCentral()
+}
+
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.liquibase:liquibase-core'
+	implementation 'org.springframework:spring-jdbc'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'io.micrometer:micrometer-registry-dynatrace'
+	runtimeOnly 'io.r2dbc:r2dbc-h2'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+subprojects {
+	spotless {
+
+		format 'misc', {
+			// define the files to apply `misc` to
+			target '*.gradle', '.gitattributes', '.gitignore'
+
+			// define the steps to apply to those files
+			trimTrailingWhitespace()
+			leadingSpacesToTabs() // or leadingTabsToSpaces. Takes an integer argument if you don't like 4
+			endWithNewline()
+		}
+		java {
+			// don't need to set target, it is inferred from java
+
+			// apply a specific flavor of google-java-format
+			palantirJavaFormat('2.50.0')
+			// fix formatting of type annotations
+			formatAnnotations()
+			// make sure every file has the following copyright header.
+			// optionally, Spotless can set copyright years by digging
+			// through git history (see "license" section below)
+			licenseHeader '/* (C)$YEAR */'
+		}
+	}
+}
+
+compileJava.dependsOn spotlessApply
