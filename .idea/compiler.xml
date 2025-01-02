@@ -4,11 +4,29 @@
     <annotationProcessing>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
+        <option name="mapstruct.defaultComponentModel" value="spring" />
+        <option name="mapstruct.suppressGeneratorTimestamp" value="true" />
+        <option name="mapstruct.unmappedTargetPolicy" value="IGNORE" />
+        <option name="mapstruct.verbose" value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.4.0/fc571725ca8b92a09a48ccce8ab1547464b0bd8b/spring-boot-configuration-processor-3.4.0.jar" />
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.36/5a30490a6e14977d97d9c73c924c1f1b5311ea95/lombok-1.18.36.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok-mapstruct-binding/0.2.0/2f1cf9ced7b720ba4996c942b816669e63f0fa4f/lombok-mapstruct-binding-0.2.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mapstruct/mapstruct-processor/1.6.3/52e345c907fbf173b376586c7f8b131d53fa5867/mapstruct-processor-1.6.3.jar" />
         </processorPath>
-        <module name="webflux-starter.main" />
+        <module name="spring-webflux-quickstart.test" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <option name="mapstruct.defaultComponentModel" value="spring" />
+        <option name="mapstruct.suppressGeneratorTimestamp" value="true" />
+        <option name="mapstruct.unmappedTargetPolicy" value="IGNORE" />
+        <option name="mapstruct.verbose" value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.4.1/8dfcdae21f559be9c8a4d6d515e77cfd1d9c06a8/spring-boot-configuration-processor-3.4.1.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.36/5a30490a6e14977d97d9c73c924c1f1b5311ea95/lombok-1.18.36.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mapstruct/mapstruct-processor/1.6.3/52e345c907fbf173b376586c7f8b131d53fa5867/mapstruct-processor-1.6.3.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok-mapstruct-binding/0.2.0/2f1cf9ced7b720ba4996c942b816669e63f0fa4f/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="spring-webflux-quickstart.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="21" />
